@@ -21,11 +21,7 @@ function Header() {
         <div className="brandName">
           <OlxLogo></OlxLogo>
         </div>
-        <div className="placeSearch">
-          <Search></Search>
-          <input type="text" />
-          <Arrow></Arrow>
-        </div>
+        
         <div className="productSearch">
           <div className="input">
             <input
@@ -36,10 +32,6 @@ function Header() {
           <div className="searchAction">
             <Search color="#ffffff"></Search>
           </div>
-        </div>
-        <div className="language">
-          <span> ENGLISH </span>
-          <Arrow></Arrow>
         </div>
         <div className="loginPage">
           {user ? (

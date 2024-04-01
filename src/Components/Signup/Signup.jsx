@@ -29,7 +29,7 @@ export default function Signup() {
     e.preventDefault();
 
     // Check if email or phone already exists
-    const usersCollection = collection(firestore, "users");
+    const usersCollection = await collection(firestore, "users");
     const querySnapshot = await getDocs(usersCollection);
     let emailExists = false;
     let phoneExists = false;

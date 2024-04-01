@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { FirebaseContext } from '../../Store/Context';
+// import { FirebaseContext } from '../../Store/Context';
 import { getFirestore, collection } from 'firebase/firestore'; // Import the necessary Firestore functions
 import './Post.css';
 import { onSnapshot } from 'firebase/firestore';
@@ -8,16 +8,18 @@ import { useNavigate } from 'react-router';
 
 function Posts() {
 
-  const { firebase } = useContext(FirebaseContext);
-  const firestore = getFirestore(firebase);
+  // const { firebase } = useContext(FirebaseContext);
+  // const firestore = getFirestore(firebase);
 
   const { setPostDetails } = useContext(PostContext);
 
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const productsRef = collection(firestore, 'products');
+  useEffect (() => {
+    async function products(){
+
+     const productsRef = await collection( 'products');
 
     const unsubscribe = onSnapshot(productsRef, (snapshot) => {
       const allPost = snapshot.docs.map((product) => {
@@ -36,7 +38,8 @@ function Posts() {
     return () => {
       unsubscribe();
     };
-  }, [firebase]);
+  }
+  }, []);
 
   return (
     <div className="postParentDiv">
